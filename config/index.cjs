@@ -45,6 +45,16 @@ const USER_CONFIG = {
         // 出生日
         { keyword: 'born_day', date: '1995-11-29' }
       ],
+      mensesList:[
+        {year: '2022',dateStart:'03-25',dateEnd:'04-02'},
+        {year: '2022',dateStart:'04-23',dateEnd:'04-30'},
+        {year: '2022',dateStart:'05-18',dateEnd:'05-25'},
+        {year: '2022',dateStart:'06-18',dateEnd:'06-25'},
+        {year: '2022',dateStart:'07-13',dateEnd:'07-20'},
+        {year: '2022',dateStart:'08-09',dateEnd:'08-16'},
+        {year: '2022',dateStart:'09-06',dateEnd:'09-13'},
+        {year: '2022',dateStart:'10-09',dateEnd:'10-16'}
+      ]
     },
     {
       // 想要发送的人的名字
@@ -70,6 +80,16 @@ const USER_CONFIG = {
         // 出生日
         { keyword: 'born_day', date: '1996-08-23' }
       ],
+      mensesList:[
+        {year: '2022',dateStart:'03-25',dateEnd:'04-02'},
+        {year: '2022',dateStart:'04-23',dateEnd:'04-30'},
+        {year: '2022',dateStart:'05-18',dateEnd:'05-25'},
+        {year: '2022',dateStart:'06-18',dateEnd:'06-25'},
+        {year: '2022',dateStart:'07-13',dateEnd:'07-20'},
+        {year: '2022',dateStart:'08-09',dateEnd:'08-16'},
+        {year: '2022',dateStart:'09-06',dateEnd:'09-13'},
+        {year: '2022',dateStart:'10-09',dateEnd:'10-16'}
+      ]
     }
   ],
 
