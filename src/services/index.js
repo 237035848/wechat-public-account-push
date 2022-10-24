@@ -569,6 +569,43 @@ export const getDateDiffList = (customizedDateList) => {
 }
 
 /**
+ * 计算姨妈日期
+ * @params {*} customizedDateList
+ * @returns
+ */
+export const getMenses = (mensesList) => {
+
+
+  let mensesPeriodAmount = 0;
+  let mensesContinuedAmount = 0;
+  let dayLastMonth;
+  let len=mensesList.length
+  console.log(mensesList)
+  console.log(mensesList.length)
+  console.log(selfDayjs().add(10,'day').toDate())
+  console.log('dayLastMonth',dayLastMonth)
+  if(mensesList){
+  mensesList.forEach((item)=>{
+    console.log(Math.ceil(selfDayjs(item.year+item.dateEnd).diff(selfDayjs(item.year+item.dateStart), 'day', true)))
+    mensesContinuedAmount += Math.ceil(selfDayjs(item.year+item.dateEnd).diff(selfDayjs(item.year+item.dateStart), 'day', true))
+    if(dayLastMonth){
+      console.log('dayLastMonth',dayLastMonth)
+      mensesPeriodAmount+=selfDayjs(item.year+item.dateStart).diff(dayLastMonth, 'day', true)
+    }
+    dayLastMonth=selfDayjs(item.year+item.dateStart)
+
+    console.log()
+  })}
+  let mensesPeriod = Math.round(selfDayjs(mensesList[len-1].year+mensesList[len-1].dateStart).diff(selfDayjs(mensesList[0].year+mensesList[0].dateStart), 'day', true))/(len-1)
+
+  //let mensesPeriod =Math.ceil(mensesPeriodAmount/(mensesList.length-1))
+  let mensesContinued =Math.ceil(mensesContinuedAmount/mensesList.length)
+  console.log(mensesPeriod)
+  console.log(mensesContinued)
+  return '还有'+Math.round(selfDayjs(mensesList[len-1].year+mensesList[len-1].dateStart).add(mensesPeriod,'day').diff(selfDayjs(), 'day', true))+'天姨妈就来咯～'
+}
+
+/**
  * 自定义插槽信息
  * @returns
  */
@@ -731,6 +768,9 @@ export const getAggregatedData = async () => {
       color: getColor(),
     }))
 
+    //获取姨妈日
+    const mensesDate =getMenses(user.mensesList)
+
     // 获取生日/生日信息
     const birthdayMessage = getBirthdayMessage(user.festivals)
 
@@ -788,6 +828,7 @@ export const getAggregatedData = async () => {
       { name: toLowerLine('poetryDynasty'), value: poetryDynasty, color: getColor() },
       { name: toLowerLine('poetryTitle'), value: poetryTitle, color: getColor() },
       { name: toLowerLine('courseSchedule'), value: courseSchedule, color: getColor() },
+      { name: toLowerLine('mensesDate'), value: mensesDate, color: getColor() },
     ].concat(weatherMessage)
       .concat(constellationFortune)
       .concat(dateDiffParams)
@@ -795,7 +836,6 @@ export const getAggregatedData = async () => {
       .concat(tianApiGreeting)
       .concat(tianApiWeather)
       .concat(tianApiNetworkHot)
-
     user.wxTemplateParams = wxTemplateParams
   }
 
