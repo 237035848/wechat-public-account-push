@@ -160,6 +160,8 @@ export const getWeather = async (province, city) => {
       windScale: info.fl,
       // 温馨提示
       notice: info.notice,
+      // 天气图标
+      weatherIcon:getWeatherIcon(info.type),
     }
 
     RUN_TIME_STORAGE[`${province}_${city}`] = cloneDeep(result)
