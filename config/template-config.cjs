@@ -12,13 +12,13 @@ const TEMPLATE_CONFIG = [
       
       城市：{{city.DATA}}
       
-      天气：{{weather.DATA}}
+      天气：{{weather.DATA}}{{weather_icon.DATA}}
       
-      气温(最高/最低):{{max_temperature.DATA}} / {{min_temperature.DATA}}
+      气温:{{min_temperature.DATA}}～{{max_temperature.DATA}}
       
-      风向: {{wind_direction.DATA}}
-      
-      风级: {{wind_scale.DATA}}
+      风向: {{wind_direction.DATA}}{{wind_scale.DATA}}
+    
+      ---
       
       {{comprehensive_horoscope.DATA}}
       
@@ -30,7 +30,7 @@ const TEMPLATE_CONFIG = [
       
       ---
       
-      {{moment_copyrighting.DATA}}
+      {{menses_date.DATA}}
     `
   },
   {
